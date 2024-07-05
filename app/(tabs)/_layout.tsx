@@ -1,12 +1,39 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Redirect, Tabs } from 'expo-router';
+import React, { useEffect, useState } from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { UserInfoProps } from '@/interface/UserInfoProps';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
+import { Init } from '@/store/actions';
+import { Text, View } from 'react-native';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const [loading, setLoading] = useState(true);
+  const user: UserInfoProps = useSelector((state: RootState) => state.AuthReducers.user);
+  const dispatch: any = useDispatch();
+  const init = async () => {
+    await dispatch(Init());
+    setLoading(false);
+  };
+  useEffect(() => {
+    init();
+  }, []);
+
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#FEFEFE', alignItems: 'center' }}>
+        <Text>LOADING</Text>
+      </View>
+    );
+  }
+
+  if (!user.email) {
+    return <Redirect href="/login_screen" />;
+  }
 
   return (
     <Tabs
@@ -24,11 +51,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="favorit"
         options={{
-          title: 'Explore',
+          title: 'Favorit',
+          headerShown: true,
+          headerTitleAlign: 'center',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'star' : 'star-outline'} color={color} />
           ),
         }}
       />
