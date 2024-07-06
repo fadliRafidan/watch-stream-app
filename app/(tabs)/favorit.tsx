@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 
 export default function FavoritScreen() {
   const favorit: UserMovieFavoritProps[] = useSelector((state: RootState) => state.AuthReducers.favorit);
-
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -16,10 +15,10 @@ export default function FavoritScreen() {
           <MovieListSavedItem data={row} key={index} />
         ))
         }
-        {favorit.length == 0 &&
-          <EmpetyComponentList />
-        }
       </View>
+      {favorit === null &&
+          <EmpetyComponentList />
+      }
     </View>
   );
 }
@@ -36,6 +35,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
     rowGap: 20,
-    columnGap: 10
+    columnGap: 5
   }
 });

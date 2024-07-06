@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: '#FFF',
-        textAlign: 'left',
+        textAlign: 'center',
         fontSize: 11,
+        width: 150
     }
 })
