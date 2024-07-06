@@ -1,4 +1,4 @@
-import MovieListItem from '@/components/ListComponent/MovieListItem';
+import MovieListItem from '@/components/HomeComponent/MovieListItem';
 import { ImageAPIUrl } from '@/constants/ApiUrl';
 import { Colors } from '@/constants/Colors';
 import { HitungCurrTime } from '@/hooks/HomeFunction';

@@ -1,6 +1,5 @@
 import { Redirect, Tabs } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
@@ -25,13 +24,13 @@ export default function TabLayout() {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#FEFEFE', alignItems: 'center' }}>
+      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#172554', alignItems: 'center' }}>
         <Text>LOADING</Text>
       </View>
     );
   }
 
-  if (!user.email) {
+  if (!user?.email) {
     return <Redirect href="/login_screen" />;
   }
 

@@ -1,5 +1,5 @@
 import EmpetyComponentList from '@/components/EmpetyComponentList';
-import MovieListSavedItem from '@/components/ListComponent/MovieListSavedItem';
+import MovieListSavedItem from '@/components/HomeComponent/MovieListSavedItem';
 import { Colors } from '@/constants/Colors';
 import { UserMovieFavoritProps } from '@/interface/UserMovieFavoritProps';
 import { RootState } from '@/store/store';
